@@ -9,16 +9,15 @@
 * 混合 image captioning 模型。
 
 一个image captioning模型至少包含三个部分
-* 视觉理解模型 -- 提取图像特征，比如CNN，Faster-RCNN
-* 自然语言生成模型 -- 将图像特征翻译成文字，比如LSTM，Transformer
-* 视觉和语言模型的连接 -- 比较流行的模型是注意力机制
+* 视觉理解模型 -- 提取图像特征，比如CNN，Faster-RCNN。
+* 自然语言生成模型 -- 将图像特征翻译成文字，比如LSTM，Transformer。
+* 视觉和语言模型的连接 -- 比较流行的模型是注意力机制。
 
 Image captioning有多种应用，比如商品描述生成，广告文本的自动生成以及新闻文本的自动生成。在体育领域应用比较广泛的就是新闻文本的自动化生成。一篇体育新闻往往有各种各样的数据，比如比分数据，精彩集锦以及明星运动员的个人介绍等，其中精彩集锦的描述以及运动员介绍等都可以通过 image captioning 技术来完成。
 
 
 # Paddle-AoA-Captioning
-
-[English](./README.md) | 简体中文
+这个repository来自[这里](https://github.com/Lieberk/Paddle-AoANet), 我们十分感谢作者的贡献。
 
 ## 一、简介
 参考论文：《Attention on Attention for Image Captioning》[论文链接](https://arxiv.org/abs/1908.06954v2)
