@@ -19,7 +19,7 @@ Image captioning有多种应用，比如商品描述生成，广告文本的自�
 # Paddle-AoA-Captioning
 这个repository来自[这里](https://github.com/Lieberk/Paddle-AoANet), 我们十分感谢作者的贡献。
 
-## 一、简介
+## 简介
 参考论文：《Attention on Attention for Image Captioning》[论文链接](https://arxiv.org/abs/1908.06954v2)
 
 注意力机制在当前的图像描述编解器框架中广泛使用，其中在每个时间步生成图像编码向量的加权平均值以指导解码器的生成过程。 
@@ -32,22 +32,21 @@ AoA首先使用注意力的结果和当前的上下文生成一个“信息向�
 
 [参考项目地址](https://github.com/husthuaan/AoANet)
 
-## 二、复现精度
-代码在coco2014数据集上训练，复现精度：
+## 环境依赖
+paddlepaddle-gpu==2.1.2  cuda 10.2
 
-Cross-entropy Training
+opencv-python==4.5.3.56
 
-|Bleu_1|Bleu_2|Bleu_3|Bleu_4|METEOR|ROUGE_L|CIDEr|SPICE|
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-|0.778|0.623|0.485|0.377|0.284|0.578|1.187|0.215|
+yacs==0.1.7
 
-SCST(Self-critical Sequence Training)
+yaml==0.2.5
 
-|Bleu_1|Bleu_2|Bleu_3|Bleu_4|METEOR|ROUGE_L|CIDEr|SPICE|
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-|0.810|0.658|0.511|0.391|0.286|0.589|1.283|0.220|
+**安装**
+```bash
+pip install -r requestments.txt
+```
 
-## 三、数据集
+## 数据准备
 coco2014 image captions [论文](https://link.springer.com/chapter/10.1007/978-3-319-10602-1_48), 采用“Karpathy” data split [论文](https://arxiv.org/pdf/1412.2306v2.pdf)
 
 [coco2014数据集下载](https://aistudio.baidu.com/aistudio/datasetdetail/28191)
@@ -58,16 +57,7 @@ coco2014 image captions [论文](https://link.springer.com/chapter/10.1007/978-3
   - 测试集：5000张
 - 标签文件：dataset_coco.json
 
-## 四、环境依赖
-paddlepaddle-gpu==2.1.2  cuda 10.2
-
-opencv-python==4.5.3.56
-
-yacs==0.1.7
-
-yaml==0.2.5
-
-## 五、快速开始
+## 快速开始
 
 ### step1: 加载数据
 加载预处理数据文件全放在本repo的data/下 
@@ -88,11 +78,6 @@ python scripts/make_bu_data.py
 
 可以直接[加载上述预训练数据](https://aistudio.baidu.com/aistudio/datasetdetail/107198)
 其中cocobu_att分成cocobu_att_train和cocobu_att_val上传，加载完成后，要合并成cocobu_att
-
-**Install dependencies**
-```bash
-pip install -r requestments.txt
-```
 
 ### step2: 训练
 训练过程过程分为两步：Cross-entropy Training和SCST(Self-critical Sequence Training)
@@ -121,6 +106,21 @@ python eval.py
 测试时程序会加载本repo的log/下保存的训练模型数据，我们最终验证评估的是使用SCST优化的模型。
 
 可以[下载训练好的模型数据](https://aistudio.baidu.com/aistudio/datasetdetail/118052), 放到本repo的log/下，然后直接执行验证指令。
+
+## 精度
+代码在coco2014数据集上训练，复现精度：
+
+Cross-entropy Training
+
+|Bleu_1|Bleu_2|Bleu_3|Bleu_4|METEOR|ROUGE_L|CIDEr|SPICE|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
+|0.778|0.623|0.485|0.377|0.284|0.578|1.187|0.215|
+
+SCST(Self-critical Sequence Training)
+
+|Bleu_1|Bleu_2|Bleu_3|Bleu_4|METEOR|ROUGE_L|CIDEr|SPICE|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
+|0.810|0.658|0.511|0.391|0.286|0.589|1.283|0.220|
 
 ## TODO
 目前该模型训练和测试都是基于Faster-RCNN提取的特征 (详细过程可以参考[这里](https://github.com/peteanderson80/bottom-up-attention))，因此如果想用这个模型来测试自己的图片，需要首先用[Faster-RCNN](https://github.com/peteanderson80/bottom-up-attention)进行特征提取，然后才能用eval.py文件进行caption生成。将来会支持端到端的测试方式，而不需要外部的Faster-RCNN。
