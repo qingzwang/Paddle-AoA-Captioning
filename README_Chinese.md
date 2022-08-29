@@ -2,6 +2,7 @@
 <img src="img/image-captioning.png" alt="alt text" width="800"/>
 视觉和语言是人类获取信息的两种主要方式。从我们会讲话开始，我们就能用语言描述我们的所见，这是人类的一项基本能力，因此我们希望AI也能拥有这项能力，与之相关的任务便是image captioning。和其他的计算机视觉任务相比，image captioning任务可以提供更多的抽象信息，比如除了图像中的物体标签信息，image captioning还可以提供物体间的关系。
 
+
 一个image captioning模型至少包含三个部分
 * 视觉理解模型 -- 提取图像特征，比如CNN，Faster-RCNN
 * 自然语言生成模型 -- 将图像特征翻译成文字，比如LSTM，Transformer
