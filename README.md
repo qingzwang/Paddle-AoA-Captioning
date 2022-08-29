@@ -122,37 +122,5 @@ python eval.py
 
 可以[下载训练好的模型数据](https://aistudio.baidu.com/aistudio/datasetdetail/118052), 放到本repo的log/下，然后直接执行验证指令。
 
-## 六、代码结构与参数说明
-
-### 6.1 代码结构
-
-```
-├─config                          # 配置
-├─models                          # 模型
-├─misc                            # 工具以及测试代码
-├─modules                         # 损失函数模块
-├─data                            # 训练数据目录
-├─scripts                         # 预处理文件
-│  eval.py                        # 评估
-│  dataloader.py                  # 加载器
-│  README.md                      # readme
-│  requirements.txt               # 依赖
-│  train.py                       # 训练
-```
-### 6.2 参数说明
-
-可以在config文件中设置训练与评估相关参数
-
-## 七、模型信息
-
-关于模型的其他信息，可以参考下表：
-
-| 信息 | 说明 |
-| --- | --- |
-| 发布者 | Lieber |
-| 时间 | 2021.12 |
-| 框架版本 | Paddle 2.1.2 |
-| 应用场景 | 多模态 |
-| 支持硬件 | GPU、CPU |
-| 下载链接 | [最优模型](https://aistudio.baidu.com/aistudio/datasetdetail/118052)|
-| 在线运行 | [notebook](https://aistudio.baidu.com/aistudio/projectdetail/2879640)|
+## TODO
+目前该模型训练和测试都是基于Faster-RCNN提取的特征 (详细过程可以参考[这里](https://github.com/peteanderson80/bottom-up-attention))，因此如果想用这个模型来测试自己的图片，需要首先用[Faster-RCNN](https://github.com/peteanderson80/bottom-up-attention)进行特征提取，然后才能用eval.py文件进行caption生成。将来会支持端到端的测试方式，而不需要外部的Faster-RCNN。
