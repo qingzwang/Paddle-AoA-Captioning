@@ -105,7 +105,7 @@ python eval.py
 
 测试时程序会加载本repo的log/下保存的训练模型数据，我们最终验证评估的是使用SCST优化的模型。
 
-可以[下载训练好的模型数据](https://aistudio.baidu.com/aistudio/datasetdetail/118052), 放到本repo的log/下，然后直接执行验证指令。
+可以[下载训练好的模型数据](https://aistudio.baidu.com/aistudio/datasetdetail/112308), 放到本repo的log/下，然后直接执行验证指令。
 
 ## 精度
 代码在coco2014数据集上训练，复现精度：
